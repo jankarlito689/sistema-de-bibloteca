@@ -9,8 +9,14 @@ using namespace std;
 
 //declaro clase de academico
 class Academico : public Usuario{
+	//agregamos atributos o proobs a mi clase academico exclusivas de academicos
+	private:
+		string nivelAcademico;
+		string departamentoAcademico;
+		
+		//metodos
 		public:
-		Academico(string nombre, string telefono, string email);
+		Academico(string nombre, string telefono, string email,string nivelAcademico,string departamentoAcademico);
 			 void mostrarDatos() const override;
 };
 #endif
