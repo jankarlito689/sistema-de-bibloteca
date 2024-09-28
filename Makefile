@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++11 `fltk-config --cxxflags`
 LDFLAGS = `fltk-config --ldflags`
-SOURCES = Main.cpp  Usuario.cpp Administrador.cpp Libro.cpp Academico.cpp
+SOURCES = Main.cpp  Usuario.cpp Administrador.cpp libro.cpp Academico.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 EXECUTABLE = fltk_test
 
