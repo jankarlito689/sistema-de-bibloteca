@@ -5,7 +5,7 @@
 
 using namespace std;
 //Super clase de usuario
-//heredan de ella academicos y administrador
+//heredan de ella academicos 
 class Usuario{
 	//atributos
 	protected:
