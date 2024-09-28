@@ -15,10 +15,16 @@ class Usuario{
 	private:
 		string carrera;
 		string codigoEstudiante;
+		
+		
 	//metodos
 	public:
-		Usuario(string nombre, string telefono, string email, string carrera, string codigoEstudiante);
-			 virtual void mostrarDatos() const = 0;
+		Usuario(string nombre, string telefono, string email,string carrera = "", string codigoEstudiante = "");
+			  void mostrarDatos() const;
+			 
+		// Métodos para acceder a los atributos privados
+		string getCarrera() const {return carrera; }
+		string getCodigo() const {return codigoEstudiante; }
 	
 	};
 #endif
