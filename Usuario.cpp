@@ -6,7 +6,7 @@ Usuario::Usuario(string nombre, string telefono, string email, string carrera, s
 
 //mosramos los datos de usuario
 void Usuario::mostrarDatos() const{
-	cout << "Datos del alumno" << endl;
+	cout << "Datos del alumno";
 	cout << "Nombre: " << nombre 
 	     << "\nTelefono: " << telefono
 	     << "\nEmail: " << email 
