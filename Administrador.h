@@ -8,11 +8,11 @@
 
 using namespace std;
 
-class Biblotecario : public Usuario {
+class Bibliotecario : public Usuario {
 	
 	//metodos
 		public:
-			Biblotecario(string nombre, string telefono, string email);
+			Bibliotecario(string nombre, string telefono, string email);
 			
 			// Métodos para gestionar libros
 			 void agregarLibro(vector<Libro>& libros, const string& titulo, const string& autor);
