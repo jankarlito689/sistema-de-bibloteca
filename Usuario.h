@@ -8,7 +8,7 @@ using namespace std;
 //heredan de ella academicos 
 class Usuario{
 	//atributos
-	protected:
+	public:
 		string nombre;
 		string telefono;
 		string email;
