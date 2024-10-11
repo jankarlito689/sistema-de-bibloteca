@@ -9,7 +9,7 @@ void Libro::mostrarDatos() const{
 	cout << "Libro" << endl;
 	cout << "Titulo: " << titulo 
 	     << "\nAutor: " << autor
-	     << "\nEstado: " << (prestado ? "en uso" : "Disponible")  
+	     << "\nEstado: " << (prestado ? "en uso" : "Disponible")  //mostramos la disponibilidad
 	     << "\nFecha de volucion: " << (prestado ? fechaDevolucion : 0) << endl;
 	}
 
