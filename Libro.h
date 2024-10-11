@@ -11,7 +11,7 @@ using namespace std;
 //Super clase de usuario
 class Libro{
 	//atributos
-	private:
+	public:
 		string titulo;
 		string autor;
 		bool prestado;
@@ -20,7 +20,7 @@ class Libro{
 		
 		
 	//metodos
-	public:
+	
 		Libro(string titulo, string autor);
 		
 		void prestarLibro(int dias);
