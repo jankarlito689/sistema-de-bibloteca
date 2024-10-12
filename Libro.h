@@ -1,4 +1,4 @@
-#ifndef LIBBRO_H
+#ifndef LIBRO_H
 #define LIBRO_H
 
 #include <iostream>
@@ -8,7 +8,7 @@
 
 using namespace std;
 
-//Super clase de usuario
+
 class Libro{
 	//atributos
 	public:
