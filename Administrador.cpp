@@ -45,4 +45,22 @@ void Bibliotecario::eliminarUsuario(vector<Usuario*>& usuarios, const string& no
         }
     }
     cout << "El Usuario '" << nombre << "' no se encontró en el sistema." << endl;
-}
+} 
+
+
+//Métodos para mostrar la informacion de usuario
+void Bibliotecario::mostrarUsuario(vector<Usuario*>& usuarios){
+	  if (usuarios.empty()) {
+			cout << "No hay usuarios registrados." << endl;
+			return;
+		}
+		
+	cout << "No hay usuarios registrados." << endl;
+
+	for (const auto& Usuario : usuarios){
+		cout << "Nombre: " << Usuario->nombre<< endl;
+        cout << "Teléfono: " << Usuario->telefono<< endl;
+        cout << "Email: " << Usuario->email<< endl;
+        cout << "---------------------------" << endl;
+		}
+	}
