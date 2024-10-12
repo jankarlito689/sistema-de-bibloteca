@@ -21,6 +21,9 @@ class Bibliotecario : public Usuario {
 			 // Métodos para gestionar usuarios
 			  void agregarUsuario(vector<Usuario*>& usuarios, Usuario* nuevoUsuario);
 			  void eliminarUsuario(vector<Usuario*>& usuarios, const string& nombre);
+			  
+			  //Métodos para mostrar la informacion de usuario
+			  void mostrarUsuario(vector<Usuario*>& usuarios);
 			
 	};
 	#endif
