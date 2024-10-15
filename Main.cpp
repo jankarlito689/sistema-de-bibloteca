@@ -3,6 +3,7 @@
 #include "Libro.h"
 #include "Administrador.h"
 #include <iostream>
+#include <cstdlib>
 #include <vector>
 using namespace std;
 
@@ -15,6 +16,15 @@ void mostrarMenu() {
     cout << "4. Eliminar libro" << endl;
     cout << "5. Mostra informacion de usuario" << endl;
     cout << "6. Salir" << endl;
+}
+
+// Función para limpiar la pantalla
+void limpiarPantalla() {
+    #if defined(_WIN32) || defined(_WIN64)
+        system("cls");  // Limpiar pantalla en Windows
+    #else
+        system("clear");  // Limpiar pantalla en Linux/Mac
+    #endif
 }
 
 int main(){
@@ -47,6 +57,7 @@ int main(){
 				
 				Usuario* nuevoUsuario = new Usuario(nombre, telefono, email);
 				bibliotecario.agregarUsuario(usuarios, nuevoUsuario);
+				limpiarPantalla();
 				break;
 				}
 			case 2: {
@@ -55,6 +66,7 @@ int main(){
 				 cout << "Nombre del usuario a eliminar: ";
 				 cin >> nombre;
 				 bibliotecario.eliminarUsuario(usuarios, nombre); 
+				 
 				 break;
 				}
 			case 3: {
@@ -67,6 +79,8 @@ int main(){
 				cout<<"Autor del libro ";
 				cin>>autor;
 				bibliotecario.agregarLibro(libros, titulo, autor);
+				
+				limpiarPantalla();
 				break;
 				}
 			case 4: {
@@ -80,13 +94,16 @@ int main(){
 			case 5: {
 					//Mostra informacion de usuario
 					bibliotecario.mostrarUsuario(usuarios);
+					
 					break;
 				}
 			case 6:
 				 cout << "Saliendo..." << endl;
+				 limpiarPantalla();
             break;
         default:
             cout << "Opción no válida." << endl;
+            limpiarPantalla();
             break;
 			}
 		} while (opcion != 6);
