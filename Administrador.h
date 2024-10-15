@@ -24,6 +24,12 @@ class Bibliotecario : public Usuario {
 			  
 			  //Métodos para mostrar la informacion de usuario
 			  void mostrarUsuario(vector<Usuario*>& usuarios);
+			  
+			  // Métodos para buscar usuario
+			  void buscarUsuario(vector<Usuario*>& usuarios);
+			  
+			  // Métodos para buscar libros
+			  void buscarLibro(vector<Libro*>& libros);
 			
 	};
 	#endif
