@@ -34,7 +34,7 @@ void Bibliotecario::agregarUsuario(vector<Usuario*>& usuarios,Usuario* nuevoUsua
 }
 
 
-// Eliminar libro
+// Eliminar usuario
 void Bibliotecario::eliminarUsuario(vector<Usuario*>& usuarios, const string& nombre){
     for (auto it = usuarios.begin(); it != usuarios.end(); ++it) {
          if ((*it)->nombre == nombre) {  // Acceso correcto al atributo nombre
