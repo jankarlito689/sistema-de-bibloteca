@@ -17,7 +17,6 @@ class Academico : public Usuario{
 		//metodos
 		public:
 		Academico(string nombre, string telefono, string email,string nivelAcademico,string departamentoAcademico);
-			  void mostrarDatos() const;
 		
 		// Métodos para acceder a los atributos privados
 		string getNivelacademico() const {return nivelAcademico; }

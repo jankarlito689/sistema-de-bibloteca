@@ -6,15 +6,6 @@ Academico::Academico(string nombre, string telefono, string email, string nivelA
 	 :Usuario(nombre, telefono, email), nivelAcademico(nivelAcademico), departamentoAcademico(departamentoAcademico){}
 	
 
-//metodos
-void Academico::mostrarDatos() const{
-	cout << "Datos del Académico" << endl;
-	cout <<"\nNombre: " << nombre 
-		 <<"\ntelefono: "<< telefono 
-		 <<"\nEmail: "<< email 
-		 <<"\nNivelacademico: "<< nivelAcademico
-		 <<"\nDepartamentoAcademico: "<< departamentoAcademico << endl;
-}
 
 
 
