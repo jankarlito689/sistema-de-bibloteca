@@ -25,7 +25,6 @@ class Libro{
 		
 		void prestarLibro(int dias);
 		void devolverLibro();
-		void mostrarDatos() const;//mostramos el libro
 		bool estadoLibro();
 		time_t tiempoRestante();
 		

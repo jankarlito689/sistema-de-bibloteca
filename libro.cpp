@@ -4,16 +4,6 @@
 Libro::Libro(string titulo, string autor)
 	:titulo(titulo), autor(autor), prestado(true), fechaDevolucion(4){}
 
-//mostramos el libro
-void Libro::mostrarDatos() const{
-	cout << "Libro" << endl;
-	cout << "Titulo: " << titulo 
-	     << "\nAutor: " << autor
-	     << "\nEstado: " << (prestado ? "en uso" : "Disponible")  //mostramos la disponibilidad
-	     << "\nFecha de volucion: " << (prestado ? fechaDevolucion : 0) << endl;
-	}
-
-
 //prestar libro
 void Libro::prestarLibro(int dias){
 		prestado = true;
