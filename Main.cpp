@@ -11,11 +11,13 @@ using namespace std;
 //se encarga de mostra el menu de opciones al Bibliotecario
 void mostrarMenu() {
     cout << "1. Agregar usuario" << endl;
-    cout << "2. Eliminar usuario" << endl;
-    cout << "3. Agregar libro" << endl;
-    cout << "4. Eliminar libro" << endl;
-    cout << "5. Mostra informacion de usuario" << endl;
-    cout << "6. Salir" << endl;
+    cout << "2. Agregar academico" << endl;
+    cout << "3. Eliminar academico" << endl;
+    cout << "4. Eliminar usuario" << endl;
+    cout << "5. Agregar libro" << endl;
+    cout << "6. Eliminar libro" << endl;
+    cout << "7. Mostra  usuarios" << endl;
+    cout << "8. Salir" << endl;
 }
 
 // Función para limpiar la pantalla
@@ -30,6 +32,7 @@ void limpiarPantalla() {
 int main(){
 	vector<Libro> libros;  //lista de libros
 	 vector<Usuario*> usuarios;  //lista de usuarios
+	 vector<Academico*> academicos;  //lista de academicos
 	
 	 // Crear un administrador
     Bibliotecario bibliotecario("Bibliotecario", "123456789", "admin@biblioteca.com");
@@ -45,7 +48,7 @@ int main(){
 		switch(opcion){
 			case 1: {
 				//agregar usuario
-				string  nombre, telefono, email;
+				string  nombre, telefono, email, carrera, codigoEstudiante;
 				
 				
 				cout<<"Nombre del usuario: ";
@@ -54,13 +57,47 @@ int main(){
 				cin>>telefono;
 				cout<<"Dime tu email: ";
 				cin>>email;
+				cout<<"Dime tu carrera: ";
+				cin>>carrera;
+				cout<<"Dime tu codigo de estudiante: ";
+				cin>>codigoEstudiante;
 				
-				Usuario* nuevoUsuario = new Usuario(nombre, telefono, email);
+				Usuario* nuevoUsuario = new Usuario(nombre, telefono, email, carrera, codigoEstudiante);
 				bibliotecario.agregarUsuario(usuarios, nuevoUsuario);
 				limpiarPantalla();
 				break;
 				}
 			case 2: {
+				//agregar academico
+				string  nombre, telefono, email, nivelAcademico, departamentoAcademico;
+				
+				
+				cout<<"Nombre del nombre de academico: ";
+				cin>>nombre;
+				cout<<"Numero de telefono ";
+				cin>>telefono;
+				cout<<"Dime tu email: ";
+				cin>>email;
+				cout<<"Dime tu nivel academico: ";
+				cin>>nivelAcademico;
+				cout<<"Dime tu codigo de departamento academico: ";
+				cin>>departamentoAcademico;
+				
+				Academico* nuevoAcademico = new Academico(nombre, telefono, email, nivelAcademico, departamentoAcademico);
+				bibliotecario.agregarAcademico(academicos, nuevoAcademico);
+				limpiarPantalla();
+				break;
+				}
+			case 3: {
+				// Eliminar academico
+				string nombreAcademico;
+				 cout << "Nombre del academico a eliminar: ";
+				 cin >> nombreAcademico;
+				 bibliotecario.eliminarAcademico(academicos, nombreAcademico); 
+				 
+				 break;
+				}
+			case 4: {
 				// Eliminar usuario
 				string nombre;
 				 cout << "Nombre del usuario a eliminar: ";
@@ -69,7 +106,7 @@ int main(){
 				 
 				 break;
 				}
-			case 3: {
+			case 5: {
 				//agregar libro
 				string  titulo, autor;
 				
@@ -83,7 +120,7 @@ int main(){
 				limpiarPantalla();
 				break;
 				}
-			case 4: {
+			case 6: {
 					// Eliminar libro
 				string titulo;
 				 cout << "Titulo del libro a eliminar: ";
@@ -91,13 +128,13 @@ int main(){
 				 bibliotecario.eliminarLibro(libros, titulo);
 				 break;
 				} 
-			case 5: {
+			case 7: {
 					//Mostra informacion de usuario
 					bibliotecario.mostrarUsuario(usuarios);
 					
 					break;
 				}
-			case 6:
+			case 8:
 				 cout << "Saliendo..." << endl;
 				 limpiarPantalla();
             break;
@@ -106,7 +143,7 @@ int main(){
             limpiarPantalla();
             break;
 			}
-		} while (opcion != 6);
+		} while (opcion != 8);
 		
 		//Liberar memoria de usuarios
 		 for (Usuario* usuario : usuarios) {
