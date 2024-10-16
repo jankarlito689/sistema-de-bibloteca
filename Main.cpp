@@ -10,7 +10,7 @@ using namespace std;
 
 //se encarga de mostra el menu de opciones al Bibliotecario
 void mostrarMenu() {
-    cout << "1. Agregar usuario" << endl;
+    cout << "1. Agregar universitario" << endl;
     cout << "2. Agregar academico" << endl;
     cout << "3. Eliminar academico" << endl;
     cout << "4. Eliminar usuario" << endl;
@@ -29,6 +29,13 @@ void limpiarPantalla() {
     #endif
 }
 
+// Función para pausar la consola 
+void pause(){
+		 cout << "Presione Enter para continuar..." << endl;
+		 cin.ignore();
+		 cin.get();
+	}
+
 int main(){
 	vector<Libro> libros;  //lista de libros
 	 vector<Usuario*> usuarios;  //lista de usuarios
@@ -41,97 +48,100 @@ int main(){
     int opcion;
     //se encarga de mostra el menu para el usuario
     do{
+		limpiarPantalla();
 		mostrarMenu();
 		cout<<"Seleccione una opción: ";
 		cin>> opcion;
+		cin.ignore();
 		
 		switch(opcion){
 			case 1: {
 				//agregar usuario
 				string  nombre, telefono, email, carrera, codigoEstudiante;
 				
-				
-				cout<<"Nombre del usuario: ";
-				cin>>nombre;
-				cout<<"Numero de telefono ";
-				cin>>telefono;
-				cout<<"Dime tu email: ";
-				cin>>email;
-				cout<<"Dime tu carrera: ";
-				cin>>carrera;
-				cout<<"Dime tu codigo de estudiante: ";
-				cin>>codigoEstudiante;
+				cout << "Nombre del usuario: ";
+                getline(cin, nombre);
+                cout << "Número de teléfono: ";
+                getline(cin, telefono);
+                cout << "Email: ";
+                getline(cin, email);
+                cout << "Carrera: ";
+                getline(cin, carrera);
+                cout << "Código de estudiante: ";
+                getline(cin, codigoEstudiante);
 				
 				Usuario* nuevoUsuario = new Usuario(nombre, telefono, email, carrera, codigoEstudiante);
 				bibliotecario.agregarUsuario(usuarios, nuevoUsuario);
-				limpiarPantalla();
+				pause();
 				break;
 				}
 			case 2: {
 				//agregar academico
 				string  nombre, telefono, email, nivelAcademico, departamentoAcademico;
 				
-				
-				cout<<"Nombre del nombre de academico: ";
-				cin>>nombre;
-				cout<<"Numero de telefono ";
-				cin>>telefono;
-				cout<<"Dime tu email: ";
-				cin>>email;
-				cout<<"Dime tu nivel academico: ";
-				cin>>nivelAcademico;
-				cout<<"Dime tu codigo de departamento academico: ";
-				cin>>departamentoAcademico;
+				cout << "Nombre del académico: ";
+                getline(cin, nombre);
+                cout << "Número de teléfono: ";
+                getline(cin, telefono);
+                cout << "Email: ";
+                getline(cin, email);
+                cout << "Nivel académico: ";
+                getline(cin, nivelAcademico);
+                cout << "Departamento académico: ";
+                getline(cin, departamentoAcademico);
 				
 				Academico* nuevoAcademico = new Academico(nombre, telefono, email, nivelAcademico, departamentoAcademico);
 				bibliotecario.agregarAcademico(academicos, nuevoAcademico);
-				limpiarPantalla();
+				pause();
 				break;
 				}
 			case 3: {
 				// Eliminar academico
 				string nombreAcademico;
 				 cout << "Nombre del academico a eliminar: ";
-				 cin >> nombreAcademico;
+				  getline(cin, nombreAcademico);
 				 bibliotecario.eliminarAcademico(academicos, nombreAcademico); 
-				 
+				 pause();
 				 break;
 				}
 			case 4: {
 				// Eliminar usuario
 				string nombre;
 				 cout << "Nombre del usuario a eliminar: ";
-				 cin >> nombre;
+				  getline(cin, nombre);
 				 bibliotecario.eliminarUsuario(usuarios, nombre); 
-				 
+				 pause();
 				 break;
 				}
 			case 5: {
 				//agregar libro
-				string  titulo, autor;
+				 string titulo, autor;
 				
-				
-				cout<<"Titulo del libro: ";
-				cin>>titulo;
-				cout<<"Autor del libro ";
-				cin>>autor;
-				bibliotecario.agregarLibro(libros, titulo, autor);
-				
-				limpiarPantalla();
+                cout << "Título del libro: ";
+                getline(cin, titulo);
+                cout << "Autor del libro: ";
+                getline(cin, autor);
+                bibliotecario.agregarLibro(libros, titulo, autor);
+                
+                pause();
 				break;
 				}
 			case 6: {
 					// Eliminar libro
 				string titulo;
+				
 				 cout << "Titulo del libro a eliminar: ";
-				 cin >> titulo;
+				 getline(cin,titulo);
 				 bibliotecario.eliminarLibro(libros, titulo);
+				 
+				 pause();
 				 break;
 				} 
 			case 7: {
 					//Mostra informacion de usuario
-					bibliotecario.mostrarUsuario(usuarios);
+					bibliotecario.mostraInformacion(usuarios, academicos);
 					
+					 pause();
 					break;
 				}
 			case 8:
