@@ -20,11 +20,10 @@ class Usuario{
 	//metodos
 	public:
 		Usuario(string nombre, string telefono, string email,string carrera = "", string codigoEstudiante = "");
-			  void mostrarDatos() const;
-			 
+		
 		// Métodos para acceder a los atributos privados
-		string getCarrera() const {return carrera; }
-		string getCodigo() const {return codigoEstudiante; }
+		string getCarrera()  {return carrera; }
+		string getCodigo() {return codigoEstudiante; }
 	
 	};
 #endif
