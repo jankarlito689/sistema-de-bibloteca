@@ -47,6 +47,24 @@ void Bibliotecario::eliminarUsuario(vector<Usuario*>& usuarios, const string& no
     cout << "El Usuario '" << nombre << "' no se encontró en el sistema." << endl;
 } 
 
+// Agregar academico
+void Bibliotecario::agregarAcademico(vector<Academico*>& academicos,Academico* nuevoAcademico) {
+     academicos.push_back(nuevoAcademico);
+    cout << "Academico '" << nuevoAcademico->nombre << "' agregado exitosamente." <<endl;
+}
+
+// Eliminar academico
+void Bibliotecario::eliminarAcademico(vector<Academico*>& academicos, const string& nombre){
+    for (auto it = academicos.begin(); it != academicos.end(); ++it) {
+         if ((*it)->nombre == nombre) {  // Acceso correcto al atributo nombre
+            cout << "Academico '" << (*it)->nombre << "' eliminado exitosamente." << endl;
+            delete *it;  // Liberar la memoria del academico
+            academicos.erase(it);  // Eliminar el academico del vector
+            return;
+        }
+    }
+    cout << "El Academico '" << nombre << "' no se encontró en el sistema." << endl;
+} 
 
 //Métodos para mostrar la informacion de usuario
 void Bibliotecario::mostrarUsuario(vector<Usuario*>& usuarios){
@@ -61,6 +79,8 @@ void Bibliotecario::mostrarUsuario(vector<Usuario*>& usuarios){
 		cout << "Nombre: " << Usuario->nombre<< endl;
         cout << "Teléfono: " << Usuario->telefono<< endl;
         cout << "Email: " << Usuario->email<< endl;
+        cout << "Carrera: " << Usuario->getCarrera() << endl;
+        cout << "codigo de estudiante: " << Usuario->getCodigo() << endl;
         cout << "---------------------------" << endl;
 		}
 	}

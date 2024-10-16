@@ -2,6 +2,7 @@
 #define ADMINISRADOR_H
 
 #include "Usuario.h"
+#include "Academico.h"
 #include "Libro.h"
 #include  <vector>
 
@@ -22,8 +23,14 @@ class Bibliotecario : public Usuario {
 			  void agregarUsuario(vector<Usuario*>& usuarios, Usuario* nuevoUsuario);
 			  void eliminarUsuario(vector<Usuario*>& usuarios, const string& nombre);
 			  
-			  //Métodos para mostrar la informacion de usuario
+			  // Métodos para gestionar academicos
+			  void agregarAcademico(vector<Academico*>& academicos, Academico* nuevoAcademico);
+			  void eliminarAcademico(vector<Academico*>& academicos, const string& nombre);
+			  
+			  
+			  //Métodos para mostrar la informacion de usuario y academico
 			  void mostrarUsuario(vector<Usuario*>& usuarios);
+			  void mostrarAcademico(vector<Academico*>& academicos);
 			  
 			  // Métodos para buscar usuario
 			  void buscarUsuario(vector<Usuario*>& usuarios);
