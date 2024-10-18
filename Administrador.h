@@ -37,7 +37,7 @@ class Bibliotecario : public Usuario {
 			  void buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>& academicos);
 			  
 			  // Métodos para buscar libros
-			  void buscarLibro(vector<Libro*>& libros);
+			  void buscarLibro(vector<Libro>& libros);
 			
 	};
 	#endif
