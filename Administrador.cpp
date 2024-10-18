@@ -101,7 +101,7 @@ void Bibliotecario::informacioUsuario(vector<Usuario*>& usuarios){
 		
 	}
 	
-// Función para mostrar toda la información de usuarios y académicos
+//Mostrar toda la información de usuarios y académicos
 void Bibliotecario::mostraInformacion(vector<Usuario*>& usuarios, vector<Academico*>& academicos){
 	
 		 cout << "=== Información de Usuarios ===" << endl;
@@ -111,4 +111,61 @@ void Bibliotecario::mostraInformacion(vector<Usuario*>& usuarios, vector<Academi
 		 cout << "=== Información de Academicos ===" << endl;
 					informacionAcademico(academicos);
 		 cout << endl;
+	}
+
+//Métodos para buscar usuarios
+void Bibliotecario::buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>& academicos){
+		string nombre;//variable donde se guarda el nombre a buscar
+		
+		cout << "Ingrese el nombre del usuario o académico a buscar: ";
+			getline(cin, nombre);
+			
+		bool encontrado = false;
+		
+		 // Buscar en la lista de usuarios
+		 for(Usuario* usuario : usuarios){
+				if(usuario->nombre == nombre){
+					cout << "Usuario encontrado: " << endl;
+					informacioUsuario(usuarios);
+					encontrado = true;
+						break;
+					}
+			 }
+		 // Si no se encuentra en usuarios, buscar en la lista de académicos
+		 if(!encontrado){
+				for(Academico* academico : academicos){
+						if(academico->nombre == nombre){  
+							cout << "Académico encontrado: " << endl;
+							informacionAcademico(academicos);
+							encontrado = true;
+								break;
+							}
+					}
+			 }
+		if (!encontrado) {
+			cout << "Usuario o académico no encontrado." << endl;
+		}
+	}
+	
+//Métodos para buscar libros
+void Bibliotecario::buscarLibro(vector<Libro>& libros){
+		string titulo;
+		
+		cout << "Ingrese el título del libro a buscar: ";
+			getline(cin, titulo);
+			
+		bool encontrado = false;
+		
+		for(Libro libro : libros){
+				if(libro.titulo == titulo){
+					cout << "Libro encontrado: " << endl;
+					cout << "Título: " << libro.titulo << endl;
+					cout << "Autor: " << libro.autor << endl;
+					encontrado = true;
+					break;
+				}
+			}
+		if (!encontrado) {
+        cout << "Libro '" << titulo << "' no encontrado." << endl;
+		}
 	}
