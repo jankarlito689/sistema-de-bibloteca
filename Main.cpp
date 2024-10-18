@@ -17,7 +17,9 @@ void mostrarMenu() {
     cout << "5. Agregar libro" << endl;
     cout << "6. Eliminar libro" << endl;
     cout << "7. Mostra  usuarios" << endl;
-    cout << "8. Salir" << endl;
+    cout << "8. Buscar  usuario" << endl;
+    cout << "9. Buscar  libro" << endl;
+    cout << "10. Salir" << endl;
 }
 
 // Función para limpiar la pantalla
@@ -144,7 +146,20 @@ int main(){
 					 pause();
 					break;
 				}
-			case 8:
+			case 8:{
+				// Buscar usuario
+				bibliotecario.buscarUsuario(usuarios, academicos);
+					pause();
+					break;
+				}
+			case 9:{
+				 // Buscar libro
+				 bibliotecario.buscarLibro(libros);
+					
+					pause();
+					break;
+				}
+			case 10:
 				 cout << "Saliendo..." << endl;
 				 limpiarPantalla();
             break;
@@ -153,11 +168,11 @@ int main(){
             limpiarPantalla();
             break;
 			}
-		} while (opcion != 8);
+		} while (opcion != 10);
 		
 		//Liberar memoria de usuarios
 		 for (Usuario* usuario : usuarios) {
         delete usuario;
-	}
+		}
 	return 0;
 }
