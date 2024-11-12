@@ -32,13 +32,13 @@ class Bibliotecario : public Usuario {
 			  void informacioUsuario(vector<Usuario*>& usuarios);
 			  void informacionAcademico(vector<Academico*>& academicos);
 			  void mostraInformacion(vector<Usuario*>& usuarios, vector<Academico*>& academicos);
-			  
+			  void mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>& academicos, vector<Libro>& libros, Usuario* usuario);
 			  // Métodos para buscar usuario
 			  void buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>& academicos);
 			  
 			  // Métodos para buscar libros
 			  void buscarLibro(vector<Libro>& libros);
 			
-	};
-	#endif
+   };
+#endif
 

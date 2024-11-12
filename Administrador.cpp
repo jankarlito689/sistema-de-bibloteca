@@ -1,4 +1,5 @@
 #include "Administrador.h"
+#include <limits>
 
 using namespace std;
 
@@ -111,6 +112,44 @@ void Bibliotecario::mostraInformacion(vector<Usuario*>& usuarios, vector<Academi
 		 cout << "=== Información de Academicos ===" << endl;
 					informacionAcademico(academicos);
 		 cout << endl;
+	}
+
+//Mostrar submenu de opciones administrativas
+void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>& academicos, vector<Libro>& libros, Usuario* usuario){
+		//variable de del segundo sub menu
+		int opcion;
+		do {
+			cout << "\n--- Submenú para " << usuario->nombre<< " ---" << endl;
+			cout << "1. Pedir un libro nuevo" << endl;
+			cout << "2. Devolver libros" << endl;
+			cout << "3. Ver historial de libros" << endl;
+			cout << "4. Regresar al menú principal" << endl;
+			cout << "Seleccione una opción: ";
+			
+			// Validar la entrada del usuario
+			while(!(cin >> opcion) || opcion <1 || opcion >4){
+					  cout << "Entrada inválida. Por favor ingrese una opción válida (1-4): ";
+					  cin.clear();
+						cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				}
+			cin.ignore();  // Limpiar buffer de entrada
+				switch (opcion) {
+					case 1:
+						
+							break;
+					case 2:
+						
+							break;
+					case 3:
+						
+							break;
+					case 4:
+						cout << "Regresando al menú principal..." << endl;
+							break;
+					default:
+                cout << "Opción inválida. Inténtelo de nuevo." << endl;
+				}
+		} while (opcion != 4);  // Mantener en el submenú hasta que el usuario elija regresar
 	}
 
 //Métodos para buscar usuarios
