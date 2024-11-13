@@ -148,7 +148,7 @@ int main(){
 				}
 			case 8:{
 				// Buscar usuario
-				bibliotecario.buscarUsuario(usuarios, academicos);
+				bibliotecario.buscarUsuario(usuarios, academicos, libros);
 					pause();
 					break;
 				}
