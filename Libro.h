@@ -27,10 +27,6 @@ class Libro{
 		void devolverLibro();
 		bool estadoLibro();
 		time_t tiempoRestante();
-		
-		// Métodos para acceder a los atributos privados
-		string getTitulo() const {return titulo; }
-		string getAutor() const {return autor; }
 			 
 	};
 #endif
