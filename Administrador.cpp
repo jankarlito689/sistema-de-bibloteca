@@ -133,6 +133,7 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 						cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				}
 			cin.ignore();  // Limpiar buffer de entrada
+			
 				switch (opcion) {
 					case 1:
 						
@@ -153,7 +154,7 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 	}
 
 //Métodos para buscar usuarios
-void Bibliotecario::buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>& academicos){
+void Bibliotecario::buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>& academicos, vector<Libro>& libros){
 		string nombre;//variable donde se guarda el nombre a buscar
 		
 		cout << "Ingrese el nombre del usuario o académico a buscar: ";
@@ -165,7 +166,8 @@ void Bibliotecario::buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>
 		 for(Usuario* usuario : usuarios){
 				if(usuario->nombre == nombre){
 					cout << "Usuario encontrado: " << endl;
-					informacioUsuario(usuarios);
+					informacioUsuario(usuarios);// Mostrar información del usuario encontrado
+					mostraSubmenu(usuarios,academicos,libros,usuario);// Llamar al submenú para el usuario
 					encontrado = true;
 						break;
 					}
