@@ -5,7 +5,7 @@
 #include <string>
 
 using namespace std;
-//Super clase de usuario heredan de ella academicos 
+//Super clase de usuario,heredan de ella academicos 
 class Usuario{
 	//atributos
 	public:
@@ -15,6 +15,7 @@ class Usuario{
 	private:
 		string carrera;
 		string codigoEstudiante;
+	protected:
 		vector<string> historialLibros;  // Historial de libros solicitados
 		
 		
