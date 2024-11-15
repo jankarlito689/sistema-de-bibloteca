@@ -1,11 +1,11 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 #include <iostream>
+#include <vector>
 #include <string>
 
 using namespace std;
-//Super clase de usuario
-//heredan de ella academicos 
+//Super clase de usuario heredan de ella academicos 
 class Usuario{
 	//atributos
 	public:
@@ -15,6 +15,7 @@ class Usuario{
 	private:
 		string carrera;
 		string codigoEstudiante;
+		vector<string> historialLibros;  // Historial de libros solicitados
 		
 		
 	//metodos
@@ -24,6 +25,10 @@ class Usuario{
 		// Métodos para acceder a los atributos privados
 		string getCarrera()  {return carrera; }
 		string getCodigo() {return codigoEstudiante; }
+		
+		// Métodos para manejar el historial de libros
+		void agregarAlHistorial(const string& titulo);
+		void HistorialLibros() const;
 	
 	};
 #endif
