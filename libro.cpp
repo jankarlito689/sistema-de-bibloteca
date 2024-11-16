@@ -2,7 +2,7 @@
 #include "Libro.h"
 //agrego props a libro
 Libro::Libro(string titulo, string autor)
-	:titulo(titulo), autor(autor), prestado(true), fechaDevolucion(4){}
+	:titulo(titulo), autor(autor), prestado(false), fechaDevolucion(0){}
 
 //prestar libro
 void Libro::prestarLibro(int dias){
@@ -11,8 +11,8 @@ void Libro::prestarLibro(int dias){
 	}
 //devolucion de libro
 void Libro::devolverLibro(){
-		prestado = true;
-		fechaDevolucion = 4;
+		prestado = false;
+		fechaDevolucion = 0;
 		
 	}
 //estado del libro
