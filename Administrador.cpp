@@ -121,6 +121,12 @@ void Bibliotecario::mostraHistorial(vector<Usuario*>& usuarios, vector<Academico
 				usuario->HistorialLibros();
 				cout << "---------------------------" << endl;
 			}
+			
+		 cout << "\n=== Historial de Préstamos de Académicos ===" << endl;
+		 for (Academico* academico : academicos) {
+				academico->HistorialLibros();
+				cout << "---------------------------" << endl;
+		}
 	}
 
 //Mostrar submenu de opciones administrativas
