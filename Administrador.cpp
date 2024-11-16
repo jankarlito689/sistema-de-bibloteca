@@ -114,6 +114,15 @@ void Bibliotecario::mostraInformacion(vector<Usuario*>& usuarios, vector<Academi
 		 cout << endl;
 	}
 
+// mostrar el historial del usuario alumno o academico
+void Bibliotecario::mostraHistorial(vector<Usuario*>& usuarios, vector<Academico*>& academicos){
+		cout << "=== Historial de Préstamos de Usuarios ===" << endl;
+		for(Usuario* usuario : usuarios){
+				usuario->HistorialLibros();
+				cout << "---------------------------" << endl;
+			}
+	}
+
 //Mostrar submenu de opciones administrativas
 void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>& academicos, vector<Libro>& libros, Usuario* usuario){
 		//variable de del segundo sub menu
@@ -135,14 +144,37 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 			cin.ignore();  // Limpiar buffer de entrada
 			
 				switch (opcion) {
-					case 1:
-						
-							break;
+					case 1:{
+                // Pedir un libro nuevo
+                string titulo;
+                cout << "Ingrese el título del libro que desea pedir: ";
+                getline(cin, titulo);
+
+                bool encontrado = false;
+                for (Libro& libro : libros) {
+                    if (libro.titulo == titulo) {
+                        if (!libro.estadoLibro()) {  // Si el libro no está prestado
+                            libro.prestarLibro(7);  // Prestar el libro por 7 días, por ejemplo
+                            usuario->agregarAlHistorial(titulo);  // Agregar al historial
+                            cout << "Libro '" << titulo << "' ha sido prestado a " << usuario->nombre << "." << endl;
+                        } else {
+                            cout << "El libro '" << titulo << "' ya está prestado." << endl;
+                        }
+                        encontrado = true;
+                        break;
+                    }
+                }
+
+                if (!encontrado) {
+                    cout << "El libro '" << titulo << "' no se encontró en el sistema." << endl;
+                }
+                break;
+            }
 					case 2:
 						
 							break;
 					case 3:
-						
+						mostraHistorial(usuarios, academicos);
 							break;
 					case 4:
 						cout << "Regresando al menú principal..." << endl;
