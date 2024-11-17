@@ -83,7 +83,36 @@ void Bibliotecario::informacionAcademico(vector<Academico*>& academicos){
         cout << "---------------------------" << endl;
 		}
 	}
-	
+
+//Métodos para mostrar la informacion de academico
+void Bibliotecario::informacionAcademico(Academico* academico){
+	  if (academico == nullptr) {
+        cout << "El académico no existe." << endl;
+        return;
+	  }
+	  
+	  cout << "Nombre: " << academico->nombre << endl;
+	  cout << "Teléfono: " << academico->telefono << endl;
+	  cout << "Email: " << academico->email << endl;
+      cout << "Nivel académico: " << academico->getNivelacademico() << endl;
+      cout << "Departamento académico: " << academico->getDepartamentoAcademico() << endl;
+      cout << "---------------------------" << endl;
+	}
+
+//Métodos para mostrar la informacion de usuario
+void Bibliotecario::informacioUsuario(Usuario* usuario){
+	  if (usuario == nullptr) {
+        cout << "El usuario no existe." << endl;
+        return;
+       }
+       
+       cout << "Nombre: " << usuario->nombre << endl;
+	   cout << "Teléfono: " << usuario->telefono << endl;
+       cout << "Email: " << usuario->email << endl;
+       cout << "Carrera: " << usuario->getCarrera() << endl;
+       cout << "Código de estudiante: " << usuario->getCodigo() << endl;
+       cout << "---------------------------" << endl;
+	}
 //Métodos para mostrar la informacion de usuarios
 void Bibliotecario::informacioUsuario(vector<Usuario*>& usuarios){
 	  if (usuarios.empty()) {
@@ -204,7 +233,7 @@ void Bibliotecario::buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>
 		 for(Usuario* usuario : usuarios){
 				if(usuario->nombre == nombre){
 					cout << "Usuario encontrado: " << endl;
-					informacioUsuario(usuarios);// Mostrar información del usuario encontrado
+					informacioUsuario(usuario);// Mostrar información del usuario encontrado
 					mostraSubmenu(usuarios,academicos,libros,usuario);// Llamar al submenú para el usuario
 					encontrado = true;
 						break;
@@ -215,7 +244,7 @@ void Bibliotecario::buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>
 				for(Academico* academico : academicos){
 						if(academico->nombre == nombre){  
 							cout << "Académico encontrado: " << endl;
-							informacionAcademico(academicos);// Mostrar información del usuario encontrado
+							informacionAcademico(academico);// Mostrar información del usuario encontrado
 							mostraSubmenu(usuarios, academicos, libros, academico);// Llamar al submenú para el usuario
 							encontrado = true;
 								break;
