@@ -84,7 +84,7 @@ void Bibliotecario::informacionAcademico(vector<Academico*>& academicos){
 		}
 	}
 
-//Métodos para mostrar la informacion de academico
+//Sobrecarga del método para mostrar la informacion de academico
 void Bibliotecario::informacionAcademico(Academico* academico){
 	  if (academico == nullptr) {
         cout << "El académico no existe." << endl;
@@ -99,7 +99,7 @@ void Bibliotecario::informacionAcademico(Academico* academico){
       cout << "---------------------------" << endl;
 	}
 
-//Métodos para mostrar la informacion de usuario
+//Sobrecarga del método para mostrar la informacion de usuario
 void Bibliotecario::informacioUsuario(Usuario* usuario){
 	  if (usuario == nullptr) {
         cout << "El usuario no existe." << endl;
@@ -142,28 +142,47 @@ void Bibliotecario::mostraInformacion(vector<Usuario*>& usuarios, vector<Academi
 					informacionAcademico(academicos);
 		 cout << endl;
 	}
+	
+//Metodo mostrar el historial del usuario
+void Bibliotecario::historialUsuarios(Usuario* usuario){
+	    if (usuario == nullptr) {
+        cout << "El usuario no existe." << endl;
+        return;
+    }
 
-// mostrar el historial del usuario alumno o academico
-void Bibliotecario::mostraHistorial(vector<Usuario*>& usuarios, vector<Academico*>& academicos){
-		cout << "=== Historial de Préstamos de Usuarios ===" << endl;
-		for(Usuario* usuario : usuarios){
-				usuario->HistorialLibros();
-				cout << "---------------------------" << endl;
-			}
-			
-		 cout << "\n=== Historial de Préstamos de Académicos ===" << endl;
-		 for (Academico* academico : academicos) {
-				academico->HistorialLibros();
-				cout << "---------------------------" << endl;
-		}
+    cout << "=== Historial de Préstamos del Usuario ===" << endl;
+    usuario->HistorialLibros();  // Llama al método del usuario para mostrar su historial
+    cout << "---------------------------" << endl;
+	}
+	
+//Metodo mostrar el historial del academicos
+void Bibliotecario::historialAcademico(Academico* academico){
+	    if (academico == nullptr) {
+        cout << "El académico no existe." << endl;
+        return;
+    }
+
+    cout << "=== Historial de Préstamos del Académico ===" << endl;
+    academico->HistorialLibros();  // Llama al método del académico para mostrar su historial
+    cout << "---------------------------" << endl;
 	}
 
 //Mostrar submenu de opciones administrativas
-void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>& academicos, vector<Libro>& libros, Usuario* usuario){
+void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>& academicos, vector<Libro>& libros, Usuario* usuario, Academico* academico){
 		//variable de del segundo sub menu
 		int opcion;
 		do {
-			cout << "\n--- Submenú para " << usuario->nombre<< " ---" << endl;
+			// Mostrar encabezado del submenú según el tipo
+			if (usuario != nullptr) {
+            cout << "\n--- Submenú para Usuario: " << usuario->nombre << " ---" << endl;
+			} else if (academico != nullptr) {
+            cout << "\n--- Submenú para Académico: " << academico->nombre << " ---" << endl;
+			} else {
+            cout << "Error: No se proporcionó un usuario ni un académico válido." << endl;
+            return;  // Salir si ambos punteros son nulos
+			}
+				
+			// Opciones del submenú
 			cout << "1. Pedir un libro nuevo" << endl;
 			cout << "2. Devolver libros" << endl;
 			cout << "3. Ver historial de libros" << endl;
@@ -189,27 +208,43 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
                 for (Libro& libro : libros) {
                     if (libro.titulo == titulo) {
                         if (!libro.estadoLibro()) {  // Si el libro no está prestado
-                            libro.prestarLibro(7);  // Prestar el libro por 7 días, por ejemplo
-                            usuario->agregarAlHistorial(titulo);  // Agregar al historial
-                            cout << "Libro '" << titulo << "' ha sido prestado a " << usuario->nombre << "." << endl;
-                        } else {
-                            cout << "El libro '" << titulo << "' ya está prestado." << endl;
-                        }
-                        encontrado = true;
-                        break;
-                    }
+								libro.prestarLibro(7);  // Prestar el libro por 7 días
+                
+                // Validar si es un usuario o académico y agregar al historial
+                if (usuario != nullptr) {
+                    usuario->agregarAlHistorial(titulo);  // Agregar al historial del usuario
+                    cout << "Libro '" << titulo << "' ha sido prestado a " << usuario->nombre << "." << endl;
+                } else if (academico != nullptr) {
+                    academico->agregarAlHistorial(titulo);  // Agregar al historial del académico
+                    cout << "Libro '" << titulo << "' ha sido prestado a " << academico->nombre << "." << endl;
+                } else {
+                    cout << "Error: No se proporcionó un usuario ni un académico válido." << endl;
                 }
-
-                if (!encontrado) {
-                    cout << "El libro '" << titulo << "' no se encontró en el sistema." << endl;
-                }
-                break;
+            } else {
+                cout << "El libro '" << titulo << "' ya está prestado." << endl;
             }
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "El libro '" << titulo << "' no se encontró en el sistema." << endl;
+    }
+    break;
+}
 					case 2:
 						
 							break;
 					case 3:
-						mostraHistorial(usuarios, academicos);
+						// Ver historial de préstamos
+						if(usuario != nullptr){
+							cout << "Mostrando historial del usuario: " << usuario->nombre << endl;
+							historialUsuarios(usuario);// Mostrar historial de usuario
+							}else if(academico != nullptr){
+								cout << "Mostrando historial del académico: " << academico->nombre << endl;
+								historialAcademico(academico); // Mostrar historial de académico
+								}
 							break;
 					case 4:
 						cout << "Regresando al menú principal..." << endl;
@@ -234,7 +269,7 @@ void Bibliotecario::buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>
 				if(usuario->nombre == nombre){
 					cout << "Usuario encontrado: " << endl;
 					informacioUsuario(usuario);// Mostrar información del usuario encontrado
-					mostraSubmenu(usuarios,academicos,libros,usuario);// Llamar al submenú para el usuario
+					mostraSubmenu(usuarios, academicos, libros, usuario, nullptr);// Llamar al submenú para el usuario
 					encontrado = true;
 						break;
 					}
@@ -245,7 +280,7 @@ void Bibliotecario::buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>
 						if(academico->nombre == nombre){  
 							cout << "Académico encontrado: " << endl;
 							informacionAcademico(academico);// Mostrar información del usuario encontrado
-							mostraSubmenu(usuarios, academicos, libros, academico);// Llamar al submenú para el usuario
+							mostraSubmenu(usuarios, academicos, libros, nullptr, academico);// Llamar al submenú para el usuario
 							encontrado = true;
 								break;
 							}

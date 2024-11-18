@@ -30,13 +30,19 @@ class Bibliotecario : public Usuario {
 			  //Métodos para mostrar la informacion de usuario y academico
 			  void informacioUsuario(vector<Usuario*>& usuarios); // Muestra todos los usuarios
 			  void informacioUsuario(Usuario* usuario); // Muestra un solo usuario
+			  
 			  void informacionAcademico(vector<Academico*>& academicos); // Muestra todos los académicos
 			  void informacionAcademico(Academico* academico);  // Muestra un solo académico
-			  void mostraInformacion(vector<Usuario*>& usuarios, vector<Academico*>& academicos);
-			  void mostraHistorial(vector<Usuario*>& usuarios, vector<Academico*>& academicos);
-			  void mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>& academicos, vector<Libro>& libros, Usuario* usuario);
+			  
+			  void mostraInformacion(vector<Usuario*>& usuarios, vector<Academico*>& academicos);//muestra la informacion de todos los usuarios(academicos y alumnos)
+			  void mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>& academicos, vector<Libro>& libros, Usuario* usuario, Academico* academico);
+			  
 			  // Métodos para buscar usuario
 			  void buscarUsuario(vector<Usuario*>& usuarios, vector<Academico*>& academicos, vector<Libro>& libros);
+			  
+			  //Métodos para gestionar el historial
+			  void historialUsuarios(Usuario* usuario);// Muestra todo el historial de los usuarios
+			  void historialAcademico(Academico* academico);// Muestra todo el historial de los academicos
 			  
 			  // Métodos para buscar libros
 			  void buscarLibro(vector<Libro>& libros);
