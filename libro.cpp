@@ -13,7 +13,7 @@ void Libro::prestarLibro(int dias){
 void Libro::devolverLibro(){
 		prestado = false;
 		fechaDevolucion = 0;
-		
+		cout << "Estado del libro actualizado a 'Disponible'." << endl;
 	}
 //estado del libro
 bool Libro::estadoLibro(){
