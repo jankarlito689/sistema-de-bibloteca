@@ -46,7 +46,10 @@ class Bibliotecario : public Usuario {
 			  
 			  // Métodos para buscar libros
 			  void buscarLibro(vector<Libro>& libros);
-			
+              
+              //Metodo para limpiar pantalla
+              void limpiarpantalla();
+              void Pause();
    };
 #endif
 
