@@ -354,14 +354,25 @@ void Bibliotecario::buscarLibro(vector<Libro>& libros){
 		
 		for(Libro libro : libros){
 				if(libro.titulo == titulo){
-					cout << "Libro encontrado: " << endl;
+					cout << "==========================================" << endl;
+					cout << "              Libro Encontrado" << endl;
+					cout << "==========================================" << endl;
 					cout << "Título: " << libro.titulo << endl;
 					cout << "Autor: " << libro.autor << endl;
+					
+					// Mostrar el estado del libro
+					if(libro.estadoLibro()){
+						cout<< "Estado: Prestado" << endl;
+						}else{
+							 cout << "Estado: Disponible" << endl;
+						}
 					encontrado = true;
 					break;
 				}
 			}
 		if (!encontrado) {
-        cout << "Libro '" << titulo << "' no encontrado." << endl;
+			cout << "==========================================" << endl;
+			cout << "Libro '" << titulo << "' no encontrado." << endl;
+			cout << "==========================================" << endl;
 		}
 	}
