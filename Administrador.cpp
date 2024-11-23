@@ -8,7 +8,22 @@ Bibliotecario::Bibliotecario(string nombre, string telefono, string email)
 	: Usuario (nombre,telefono,email){}
 
 
-
+//limpiarpantall
+void Bibliotecario::limpiarpantalla(){
+	#if defined(_WIN32) || defined(_WIN64)
+        system("cls");  // Comando para Windows
+    #else
+        system("clear");  // Comando para Linux/Mac
+    #endif
+	}
+	
+// Función para pausar la consola 
+void Bibliotecario::Pause(){
+	cout << "Presione Enter para continuar..." << endl;
+		 cin.ignore();
+		 cin.get();
+	}
+	
 // Agregar libro
 void Bibliotecario::agregarLibro(vector<Libro>& libros, const string& titulo, const string& autor) {
      libros.emplace_back(titulo, autor);
@@ -172,6 +187,9 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 		//variable de del segundo sub menu
 		int opcion;
 		do {
+			 // Limpiar pantalla
+			 limpiarpantalla();
+			 
 			// Mostrar encabezado del submenú según el tipo
 			if (usuario != nullptr) {
             cout << "\n--- Submenú para Usuario: " << usuario->nombre << " ---" << endl;
@@ -196,6 +214,7 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 						cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				}
 			cin.ignore();  // Limpiar buffer de entrada
+			
 			
 				switch (opcion) {
 					case 1:{
@@ -228,14 +247,44 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
         }
     }
 
-    if (!encontrado) {
-        cout << "El libro '" << titulo << "' no se encontró en el sistema." << endl;
-    }
+				if (!encontrado) {
+				cout << "El libro '" << titulo << "' no se encontró en el sistema." << endl;
+			}
+			Pause();
     break;
 }
-					case 2:
+					case 2:{
+						// Devolver un libro
+						string titulo;
+						cout<<"Ingrese el título del libro que desea devolver: ";
+						getline(cin, titulo);
 						
+						bool encontrado = false;
+						
+						// Buscar el libro en la lista de libros
+						for(Libro& libro : libros){
+							if(libro.titulo == titulo){
+								if(libro.estadoLibro()){ // Si el libro está prestado
+									libro.devolverLibro(); // Cambiar el estado a "no prestado"
+									cout << "El libro '" << titulo << "' ha sido devuelto exitosamente." << endl;
+									encontrado = true;
+									
+									}else{
+										  cout << "El libro '" << titulo << "' no estaba prestado." << endl;
+										  encontrado = true;
+										}
+										break;
+								}
+							}
+							
+							// Si no se encuentra el libro
+							if(!encontrado){
+								cout << "El libro '" << titulo << "' no se encontró en el sistema." << endl;
+							}
+							Pause();
 							break;
+						}
+							
 					case 3:
 						// Ver historial de préstamos
 						if(usuario != nullptr){
@@ -245,12 +294,15 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 								cout << "Mostrando historial del académico: " << academico->nombre << endl;
 								historialAcademico(academico); // Mostrar historial de académico
 								}
+								Pause();
 							break;
 					case 4:
 						cout << "Regresando al menú principal..." << endl;
+						Pause();
 							break;
 					default:
                 cout << "Opción inválida. Inténtelo de nuevo." << endl;
+                 limpiarpantalla();
 				}
 		} while (opcion != 4);  // Mantener en el submenú hasta que el usuario elija regresar
 	}
