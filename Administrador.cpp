@@ -192,9 +192,13 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 			 
 			// Mostrar encabezado del submenú según el tipo
 			if (usuario != nullptr) {
-            cout << "\n--- Submenú para Usuario: " << usuario->nombre << " ---" << endl;
+				cout << "==========================================" << endl;
+				cout << "         Submenú para Usuario: " << usuario->nombre << endl;
+				cout << "==========================================" << endl;
 			} else if (academico != nullptr) {
-            cout << "\n--- Submenú para Académico: " << academico->nombre << " ---" << endl;
+				 cout << "==========================================" << endl;
+				 cout << "       Submenú para Académico: " << academico->nombre << endl;
+				 cout << "==========================================" << endl;
 			} else {
             cout << "Error: No se proporcionó un usuario ni un académico válido." << endl;
             return;  // Salir si ambos punteros son nulos
@@ -205,6 +209,7 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 			cout << "2. Devolver libros" << endl;
 			cout << "3. Ver historial de libros" << endl;
 			cout << "4. Regresar al menú principal" << endl;
+			cout << "------------------------------------------" << endl;
 			cout << "Seleccione una opción: ";
 			
 			// Validar la entrada del usuario
@@ -220,10 +225,14 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 					case 1:{
                 // Pedir un libro nuevo
                 string titulo;
+                cout << "==========================================" << endl;
+                cout << "         Pedir un Libro Nuevo" << endl;
+                cout << "==========================================" << endl;
                 cout << "Ingrese el título del libro que desea pedir: ";
                 getline(cin, titulo);
 
                 bool encontrado = false;
+                
                 for (Libro& libro : libros) {
                     if (libro.titulo == titulo) {
                         if (!libro.estadoLibro()) {  // Si el libro no está prestado
@@ -256,6 +265,9 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 					case 2:{
 						// Devolver un libro
 						string titulo;
+						cout << "==========================================" << endl;
+						cout << "          Devolver un Libro" << endl;
+						cout << "==========================================" << endl;
 						cout<<"Ingrese el título del libro que desea devolver: ";
 						getline(cin, titulo);
 						
@@ -287,6 +299,10 @@ void Bibliotecario::mostraSubmenu(vector<Usuario*>& usuarios, vector<Academico*>
 							
 					case 3:
 						// Ver historial de préstamos
+						 cout << "==========================================" << endl;
+						 cout << "       Ver Historial de Préstamos" << endl;
+						 cout << "==========================================" << endl;
+						
 						if(usuario != nullptr){
 							cout << "Mostrando historial del usuario: " << usuario->nombre << endl;
 							historialUsuarios(usuario);// Mostrar historial de usuario
