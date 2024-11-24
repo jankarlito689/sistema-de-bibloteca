@@ -8,8 +8,21 @@
 using namespace std;
 
 
+// Función para limpiar la pantalla
+void limpiarPantalla() {
+    #if defined(_WIN32) || defined(_WIN64)
+        system("cls");  // Limpiar pantalla en Windows
+    #else
+        system("clear");  // Limpiar pantalla en Linux/Mac
+    #endif
+}
+
 //se encarga de mostra el menu de opciones al Bibliotecario
 void mostrarMenu() {
+	limpiarPantalla();
+	cout << "==========================================" << endl;
+    cout << "      SISTEMA DE GESTIÓN DE BIBLIOTECA    " << endl;
+    cout << "==========================================" << endl;
     cout << "1. Agregar universitario" << endl;
     cout << "2. Agregar academico" << endl;
     cout << "3. Eliminar academico" << endl;
@@ -20,15 +33,8 @@ void mostrarMenu() {
     cout << "8. Buscar  usuario" << endl;
     cout << "9. Buscar  libro" << endl;
     cout << "10. Salir" << endl;
-}
-
-// Función para limpiar la pantalla
-void limpiarPantalla() {
-    #if defined(_WIN32) || defined(_WIN64)
-        system("cls");  // Limpiar pantalla en Windows
-    #else
-        system("clear");  // Limpiar pantalla en Linux/Mac
-    #endif
+    cout << "==========================================" << endl;
+    cout << "Seleccione una opción: ";
 }
 
 // Función para pausar la consola 
@@ -50,9 +56,7 @@ int main(){
     int opcion;
     //se encarga de mostra el menu para el usuario
     do{
-		limpiarPantalla();
 		mostrarMenu();
-		cout<<"Seleccione una opción: ";
 		cin>> opcion;
 		cin.ignore();
 		
@@ -61,6 +65,7 @@ int main(){
 				//agregar usuario
 				string  nombre, telefono, email, carrera, codigoEstudiante;
 				
+				cout << "\n=== Agregar Universitario ===" << endl;
 				cout << "Nombre del usuario: ";
                 getline(cin, nombre);
                 cout << "Número de teléfono: ";
@@ -81,6 +86,7 @@ int main(){
 				//agregar academico
 				string  nombre, telefono, email, nivelAcademico, departamentoAcademico;
 				
+				cout << "\n=== Agregar Académico ===" << endl;
 				cout << "Nombre del académico: ";
                 getline(cin, nombre);
                 cout << "Número de teléfono: ";
@@ -100,6 +106,8 @@ int main(){
 			case 3: {
 				// Eliminar academico
 				string nombreAcademico;
+				
+				cout << "\n=== Eliminar Académico ===" << endl;
 				 cout << "Nombre del academico a eliminar: ";
 				  getline(cin, nombreAcademico);
 				 bibliotecario.eliminarAcademico(academicos, nombreAcademico); 
@@ -109,6 +117,8 @@ int main(){
 			case 4: {
 				// Eliminar usuario
 				string nombre;
+				
+				cout << "\n=== Eliminar Usuario ===" << endl;
 				 cout << "Nombre del usuario a eliminar: ";
 				  getline(cin, nombre);
 				 bibliotecario.eliminarUsuario(usuarios, nombre); 
@@ -119,6 +129,7 @@ int main(){
 				//agregar libro
 				 string titulo, autor;
 				
+				cout << "\n=== Agregar Libro ===" << endl;
                 cout << "Título del libro: ";
                 getline(cin, titulo);
                 cout << "Autor del libro: ";
@@ -132,6 +143,7 @@ int main(){
 					// Eliminar libro
 				string titulo;
 				
+				 cout << "\n=== Eliminar Libro ===" << endl;
 				 cout << "Titulo del libro a eliminar: ";
 				 getline(cin,titulo);
 				 bibliotecario.eliminarLibro(libros, titulo);
@@ -141,6 +153,7 @@ int main(){
 				} 
 			case 7: {
 					//Mostra informacion de usuario
+					cout << "\n=== Mostrar Usuarios y Académicos ===" << endl;
 					bibliotecario.mostraInformacion(usuarios, academicos);
 					
 					 pause();
@@ -148,12 +161,14 @@ int main(){
 				}
 			case 8:{
 				// Buscar usuario
+				cout << "\n=== Buscar Usuario o Académico ===" << endl;
 				bibliotecario.buscarUsuario(usuarios, academicos, libros);
 					pause();
 					break;
 				}
 			case 9:{
 				 // Buscar libro
+				 cout << "\n=== Buscar Libro ===" << endl;
 				 bibliotecario.buscarLibro(libros);
 					
 					pause();
@@ -165,7 +180,7 @@ int main(){
             break;
         default:
             cout << "Opción no válida." << endl;
-            limpiarPantalla();
+            pause();
             break;
 			}
 		} while (opcion != 10);
